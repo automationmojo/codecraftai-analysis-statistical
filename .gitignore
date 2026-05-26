@@ -130,4 +130,12 @@ dmypy.json
 .pyre/
 
 # Project Specific Exclusion
-*.code-workspace
+# Generated workspace files only -- the template (*.template) is checked in.
+workspaces/*.code-workspace
+
+# Test output directories
+.output/
+.output-*/
+
+# OS clutter
+.DS_Store

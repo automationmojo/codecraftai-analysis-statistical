@@ -1,0 +1,27 @@
+"""
+    Scope-level originations for the analysis-statistical singlehost tests.
+
+    Originations attach :mod:`testbase` resource factories at this scope so
+    every descendant test module can consume them by parameter name. Tests
+    can still construct fixtures inline; consuming the factory is the
+    canonical pattern for shared, scope-managed test data.
+"""
+
+__author__ = "Automation Mojo LLC"
+__copyright__ = "Copyright 2026, Automation Mojo LLC"
+
+
+from automojo import testbase
+
+from automojo.testshared.factories.sasdatasets import (
+    create_lag_inputs,
+    create_merge_sources,
+    create_sales_dataset,
+    create_transform_inputs,
+)
+
+
+testbase.originate.parameter(create_sales_dataset, identifier="sales_dataset")
+testbase.originate.parameter(create_merge_sources, identifier="merge_sources")
+testbase.originate.parameter(create_lag_inputs, identifier="lag_inputs")
+testbase.originate.parameter(create_transform_inputs, identifier="transform_inputs")

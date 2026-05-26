@@ -1,26 +1,71 @@
 [tool.poetry]
-name = "<package name>"
-description = "<package description>"
-version = "0.0.1"
-authors = []
+name = "automojo-analysis-statistical"
+description = "Automation Mojo Statistical Analysis Library -- SAS-comparable DATA-step semantics in Python."
+version = "0.1.0"
+authors = ["Automation Mojo LLC <info@automationmojo.com>"]
 readme = "README.rst"
 license = "LICENSE.txt"
 classifiers = [
-    "Programming Language :: Python :: 3",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
-    "Operating System :: POSIX"
+    "Operating System :: POSIX",
+    "Operating System :: MacOS :: MacOS X",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 keywords = [
-    "python"
+    "python",
+    "statistics",
+    "sas",
+    "data-step",
+    "automation",
+    "analytics",
 ]
-packages = [{include="mojo", from="source/packages"}]
+packages = [{include="automojo", from="source/packages"}]
+
+[tool.poetry.urls]
+Homepage = "https://github.com/automationmojo/automojo-analysis-statistical"
+Repository = "https://github.com/automationmojo/automojo-analysis-statistical"
+Issues = "https://github.com/automationmojo/automojo-analysis-statistical/issues"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
+numpy = "^2.0"
+automojo-errors = { git = "https://github.com/automationmojo/automojo-errors.git", branch = "main" }
+automojo-testbase = { git = "https://github.com/automationmojo/automojo-testbase.git", branch = "main" }
 
 [tool.poetry.group.dev.dependencies]
+ruff = "^0.6"
 
 [tool.poetry.group.dbio.dependencies]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 110
+extend-exclude = ["source/examples/sasstep*.py", ".venv", "workspaces"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "F",    # pyflakes
+    "W",    # pycodestyle warnings
+    "B",    # bugbear (mutable defaults, etc.)
+    "UP",   # pyupgrade
+    "SIM",  # simplifications
+]
+ignore = [
+    "E501",   # line length is enforced separately
+    "SIM108", # ternary preference -- collides with our explicit-conditional style
+    "SIM114", # combining if branches -- collides with explicit-conditional style
+    "UP032",  # .format() -> f-string -- our error-message style mandates .format()+join
+    "B007",   # unused loop variable -- common in indexed iteration
+]
 
 [build-system]
 requires = ["poetry-core"]

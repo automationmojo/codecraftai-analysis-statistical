@@ -1,0 +1,64 @@
+name: Merge Gate
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+        python-version: ['3.10', '3.11', '3.12']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - uses: Gr1N/setup-poetry@v8
+
+      - name: Print Python Version
+        run: python3 -c "import sys; print(sys.version)"
+
+      - name: Configure Git Store
+        run: git config --global credential.helper store
+
+      - name: Set the Github Token
+        run: echo "https://git:${{ secrets.AUTOMOJO_ACCESS_TOKEN }}@github.com" > ~/.git-credentials
+
+      - name: Re-Home the Repository
+        run: |
+          ./repository-setup/rehome-repository
+          cat ./.env
+
+      - name: Setup the Virtual Environment
+        run: |
+          ./development/setup-environment
+          poetry install --all-extras
+
+      - name: Lint
+        run: |
+          source ./.venv/bin/activate
+          poetry run ruff check source/packages source/testroots source/examples
+          deactivate
+
+      - name: Run Tests
+        run: |
+          source ./.venv/bin/activate
+          testbase testing run --root ./source/testroots/automojo --includes=automojo.tests.singlehost --output=./.output
+          deactivate
+
+      - name: Upload Test Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-output-${{ matrix.os }}-py${{ matrix.python-version }}
+          path: .output/
