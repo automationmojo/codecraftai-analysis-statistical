@@ -16,11 +16,11 @@
         python example_02_match_merge.py
 """
 
-__author__ = "Automation Mojo LLC"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__author__ = "Code Craft AI LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 
 
-from automojo.analysis.statistical import MergeReader, ObservationEngine
+from ccai.analysis.statistical import MergeReader, ObservationEngine
 
 
 def passthrough(pdv):

@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "automojo-analysis-statistical"
-description = "Automation Mojo Statistical Analysis Library -- SAS-comparable DATA-step semantics in Python."
+name = "codecraftai-analysis-statistical"
+description = "Code Craft AI Statistical Analysis Library -- SAS-comparable DATA-step semantics in Python."
 version = "0.1.0"
-authors = ["Automation Mojo LLC <info@automationmojo.com>"]
+authors = ["Code Craft AI LLC <info@code-craft.ai>"]
 readme = "README.rst"
 license = "LICENSE.txt"
 classifiers = [
@@ -27,18 +27,18 @@ keywords = [
     "automation",
     "analytics",
 ]
-packages = [{include="automojo", from="source/packages"}]
+packages = [{include="ccai", from="source/packages"}]
 
 [tool.poetry.urls]
-Homepage = "https://github.com/automationmojo/automojo-analysis-statistical"
-Repository = "https://github.com/automationmojo/automojo-analysis-statistical"
-Issues = "https://github.com/automationmojo/automojo-analysis-statistical/issues"
+Homepage = "https://github.com/automationmojo/codecraftai-analysis-statistical"
+Repository = "https://github.com/automationmojo/codecraftai-analysis-statistical"
+Issues = "https://github.com/automationmojo/codecraftai-analysis-statistical/issues"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
 numpy = "^2.0"
-automojo-errors = { git = "https://github.com/automationmojo/automojo-errors.git", branch = "main" }
-automojo-testbase = { git = "https://github.com/automationmojo/automojo-testbase.git", branch = "main" }
+codecraftai-errors = { git = "https://github.com/automationmojo/codecraftai-errors.git", branch = "main" }
+codecraftai-testbase = { git = "https://github.com/automationmojo/codecraftai-testbase.git", branch = "main" }
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.6"

@@ -1,0 +1,40 @@
+"""
+    Executor tests that consume the :mod:`testbase` ``transform_inputs``
+    factory rather than constructing input data inline.
+"""
+
+__author__ = "Code Craft AI LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
+
+
+
+from ccai.analysis.statistical.engine.observationengine import ObservationEngine
+from ccai.analysis.statistical.execution.compiledstep import CompiledStep
+from ccai.analysis.statistical.readers.setreader import SetReader
+
+
+def _transform(pdv):
+    """
+        Pure-vector transform fixture.
+    """
+    pdv["gross"] = pdv["qty"] * pdv["price"]
+    pdv["net"] = pdv["gross"] * (1 - pdv["disc"])
+    pdv["tax"] = pdv["net"] * 0.2
+    pdv["total"] = pdv["net"] + pdv["tax"]
+    return
+
+
+def test_vector_path_matches_reference_via_factory(transform_inputs: list[dict]):
+    """
+        The vector-path output is bit-equal to the reference engine on the
+        factory-supplied transform inputs.
+
+        :param transform_inputs: Dataset injected by the
+                                 ``transform_inputs`` parameter origination.
+    """
+    compiled = CompiledStep(logic=_transform).run(rows=transform_inputs)
+    reference = list(ObservationEngine(reader=SetReader(source=list(transform_inputs)),
+                                       logic=_transform))
+    same = compiled == reference
+    assert same is True
+    return

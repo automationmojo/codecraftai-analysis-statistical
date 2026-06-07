@@ -11,13 +11,13 @@
         python example_05_database_sqlite.py
 """
 
-__author__ = "Automation Mojo LLC"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__author__ = "Code Craft AI LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 
 
 import sqlite3
 
-from automojo.analysis.statistical import DatabaseReader, ObservationEngine
+from ccai.analysis.statistical import DatabaseReader, ObservationEngine
 
 
 def accumulate(pdv):

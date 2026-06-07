@@ -14,11 +14,11 @@
         python example_08_columnar_pipeline.py
 """
 
-__author__ = "Automation Mojo LLC"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__author__ = "Code Craft AI LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 
 
-from automojo.analysis.statistical import ColumnarStep
+from ccai.analysis.statistical import ColumnarStep
 
 
 def stage_one(pdv):

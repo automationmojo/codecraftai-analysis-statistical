@@ -19,7 +19,7 @@ Calling the advisor
 
 .. code-block:: python
 
-    from automojo.analysis.statistical import report
+    from ccai.analysis.statistical import report
 
     def step(pdv):
         pdv["gross"]   = pdv["qty"] * pdv["price"]

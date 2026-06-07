@@ -1,5 +1,5 @@
 ==============================
-automojo-analysis-statistical
+codecraftai-analysis-statistical
 ==============================
 
 Patterns for authoring and porting statistical analysis jobs to Python whose
@@ -9,7 +9,7 @@ front end for inspectable user logic, a hybrid columnar / sequential
 executor for speed, and database source readers that follow the
 SAS/ACCESS-engine pattern.
 
-Public namespace: ``automojo.analysis.statistical``.
+Public namespace: ``ccai.analysis.statistical``.
 
 Documentation
 =============
@@ -23,7 +23,7 @@ Quick example
 
 .. code-block:: python
 
-    from automojo.analysis.statistical import (ObservationEngine, SetReader)
+    from ccai.analysis.statistical import (ObservationEngine, SetReader)
 
     sales = [{"region": "East", "customer": "A", "amount": 10},
              {"region": "East", "customer": "A", "amount": 15},
@@ -49,5 +49,5 @@ This package uses ``testbase`` exclusively. After ``rehome-repository`` and
 ``setup-environment`` complete::
 
     source .venv/bin/activate
-    testbase testing run --root source/testroots/automojo \
-        --includes=automojo.tests.singlehost --output=./.output
+    testbase testing run --root source/testroots/ccai \
+        --includes=ccai.tests.singlehost --output=./.output

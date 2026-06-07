@@ -56,7 +56,7 @@ string and resolves it to a declaration dict:
 
 .. code-block:: python
 
-    from automojo.analysis.statistical import dialect_declare
+    from ccai.analysis.statistical import dialect_declare
 
     decls = [
         dialect_declare(name="name",   type_string="VARCHAR2(3)",   dialect="oracle"),

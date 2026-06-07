@@ -17,13 +17,13 @@
         python example_07_compiled_step.py
 """
 
-__author__ = "Automation Mojo LLC"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__author__ = "Code Craft AI LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 
 
 import time
 
-from automojo.analysis.statistical import (CompiledStep, ObservationEngine,
+from ccai.analysis.statistical import (CompiledStep, ObservationEngine,
                                            SetReader)
 
 

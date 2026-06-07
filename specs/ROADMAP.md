@@ -1,8 +1,8 @@
-# automojo-analysis-statistical -- Implementation Roadmap
+# codecraftai-analysis-statistical -- Implementation Roadmap
 
 This roadmap turns the reference designs in `source/examples/` (the `sasstep*`
 modules) into a production Python package under
-`source/packages/automojo/analysis/statistical/`. The reference modules are the
+`source/packages/ccai/analysis/statistical/`. The reference modules are the
 oracle: every phase below validates production output against them, then they
 remain as executable specification artifacts (not consumed at runtime).
 
@@ -22,12 +22,12 @@ remain as executable specification artifacts (not consumed at runtime).
 5. **Vectorization is an optimization, never a redefinition.** Any fast path
    must match the row-loop result.
 6. **`testbase` only.** Each new module gets matching tests under
-   `source/testroots/automojo/tests/singlehost/analysis/statistical/...`.
+   `source/testroots/ccai/tests/singlehost/analysis/statistical/...`.
 
 ## Target Package Layout
 
 ```
-source/packages/automojo/analysis/statistical/
+source/packages/ccai/analysis/statistical/
     __init__.py
     missing/
         missing.py                    # Missing
@@ -115,20 +115,20 @@ source/packages/automojo/analysis/statistical/
 ```
 
 The test tree mirrors this exactly, rooted at
-`source/testroots/automojo/tests/singlehost/analysis/statistical/`.
+`source/testroots/ccai/tests/singlehost/analysis/statistical/`.
 
 ## Dependencies
 
-The package consumes the following `automojo-*` packages via URL syntax in
-`pyproject.toml` (same style as `automojo-interop`):
+The package consumes the following `codecraftai-*` packages via URL syntax in
+`pyproject.toml` (same style as `codecraftai-interop`):
 
-* `automojo-errors` -- for shared exception types (`ConfigurationError`,
+* `codecraftai-errors` -- for shared exception types (`ConfigurationError`,
   `SemanticError`, `NotSupportedError`). Replaces the local `Unsupported`
   reference symbol with a domain-specific `UnsupportedError` that extends
   `NotSupportedError`.
-* `automojo-testbase` -- the test framework used to validate every module.
-* `automojo-xmodules` -- shared utility/cross-module helpers used across the
-  automojo suite (lazy import helpers, logger plumbing).
+* `codecraftai-testbase` -- the test framework used to validate every module.
+* `codecraftai-xmodules` -- shared utility/cross-module helpers used across the
+  ccai suite (lazy import helpers, logger plumbing).
 
 Third-party runtime: `numpy` for the vectorized executor and columnar path.
 Optional drivers (`psycopg`, `pymysql`, `oracledb`, `pyodbc`) are NOT direct
@@ -137,11 +137,11 @@ dependencies; the `DatabaseReader` wraps any PEP 249 cursor a caller hands in.
 ## Phases
 
 ### Phase 0 -- Scaffolding (foundational)
-- Fix `pyproject.toml`: `packages = [{include="automojo", from="source/packages"}]`,
-  and add the URL-style automojo dependencies.
-- Create the package namespace `automojo/analysis/statistical/__init__.py` and
+- Fix `pyproject.toml`: `packages = [{include="ccai", from="source/packages"}]`,
+  and add the URL-style ccai dependencies.
+- Create the package namespace `ccai/analysis/statistical/__init__.py` and
   each sub-package `__init__.py` (empty namespace markers).
-- Create `source/testroots/automojo/__testroot__.py` (`ROOT_TYPE = "testbase"`),
+- Create `source/testroots/ccai/__testroot__.py` (`ROOT_TYPE = "testbase"`),
   with `tests/`, `testshared/`, and the singlehost test tree skeleton.
 
 ### Phase 1 -- Engine Core (correctness oracle, no DB / no IR)
@@ -186,7 +186,7 @@ Port `sasstep_ir.py`. IR nodes each become their own dataclass file under
 `ir/nodes/`. `AstLowerer` replaces the `_Lowerer` class. `Classifier` exposes
 `classify(stmts)` and `summarize(stmts)`. `IrInterpreter` is the faithful
 oracle for IR output. `LogicCompiler.compile(logic)` returns
-`(callable, mode)`. `UnsupportedError` extends `automojo.errors.exceptions.
+`(callable, mode)`. `UnsupportedError` extends `ccai.errors.exceptions.
 NotSupportedError`.
 
 Tests:
@@ -244,7 +244,7 @@ Tests:
 - A fallback reports `fallback` with a human-readable cause.
 
 ### Phase 7 -- Public API & Documentation
-- Curate `automojo/analysis/statistical/__init__.py` to expose the public
+- Curate `ccai/analysis/statistical/__init__.py` to expose the public
   surface: `ObservationEngine`, `SetReader`, `MergeReader`, `DatabaseReader`,
   `Missing`, `MISSING`, `missing()`, `Phase`, `register_format`,
   `register_informat`, `register_type`, `CompiledStep`, `ColumnarStep`,
@@ -275,9 +275,9 @@ Each of these has its own milestone branch when picked up:
   (timeouts, retries on flaky DB cursors, logging verbosity) only through an
   `Aspects` parameter. No behavior-modifying decorators.
 * **Error semantics** -- `SemanticError` is never caught. Configuration-shape
-  errors raise `ConfigurationError` from `automojo-errors`. Domain-specific
+  errors raise `ConfigurationError` from `codecraftai-errors`. Domain-specific
   unsupported logic raises `UnsupportedError`.
-* **Logging** -- use `automojo-xmodules` logger plumbing once Phase 1 is
+* **Logging** -- use `codecraftai-xmodules` logger plumbing once Phase 1 is
   green; before then, the engine has no logging (the reference engine doesn't
   either, and adding it before validation would muddy the oracle comparison).
 

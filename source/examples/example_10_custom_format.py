@@ -15,13 +15,13 @@
         python example_10_custom_format.py
 """
 
-__author__ = "Automation Mojo LLC"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__author__ = "Code Craft AI LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 
 
 from typing import Any
 
-from automojo.analysis.statistical import (NUM, ObservationEngine, SetReader,
+from ccai.analysis.statistical import (NUM, ObservationEngine, SetReader,
                                            register_format)
 
 
