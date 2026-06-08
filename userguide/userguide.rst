@@ -21,7 +21,7 @@ User Manual
    10-04-03-testing-frameworks-testbase
 
 .. toctree::
-   :caption: automojo-analysis-statistical
+   :caption: codecraftai-analysis-statistical
 
    20-00-overview-and-mental-model
    20-01-engine-core-and-pdv

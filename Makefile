@@ -14,8 +14,8 @@ help:
 
 test:
 	. ./.venv/bin/activate && \
-	testbase testing run --root ./source/testroots/automojo \
-	    --includes=automojo.tests.singlehost --output=./.output
+	testbase testing run --root ./source/testroots/ccai \
+	    --includes=ccai.tests.singlehost --output=./.output
 
 lint:
 	. ./.venv/bin/activate && \
@@ -27,8 +27,8 @@ format:
 
 coverage:
 	. ./.venv/bin/activate && \
-	coverage run -m testbase testing run --root ./source/testroots/automojo \
-	    --includes=automojo.tests.singlehost --output=./.output && \
+	coverage run -m testbase testing run --root ./source/testroots/ccai \
+	    --includes=ccai.tests.singlehost --output=./.output && \
 	coverage report -m
 
 userguide:

@@ -1,7 +1,7 @@
 .. _20-00-overview-and-mental-model:
 
 ===================================================
-automojo-analysis-statistical -- Overview and Model
+codecraftai-analysis-statistical -- Overview and Model
 ===================================================
 
 This package provides patterns for authoring and porting statistical analysis
@@ -17,7 +17,7 @@ Public surface
 ==============
 
 The supported public surface is everything listed in
-``automojo.analysis.statistical.__all__``. Highlights:
+``ccai.analysis.statistical.__all__``. Highlights:
 
 * ``ObservationEngine`` -- the iterator over the implicit loop.
 * ``SetReader``, ``MergeReader``, ``DatabaseReader`` -- the READ-phase

@@ -8,7 +8,7 @@ This folder contains two kinds of files:
     Faithful Python renderings of the SAS DATA-step execution model that act
     as the documented correctness oracle for the production package. They are
     *not* meant to be imported by user code. The production package mirrors
-    every behavior in ``source/packages/automojo/analysis/statistical/`` and
+    every behavior in ``source/packages/ccai/analysis/statistical/`` and
     pins parity against these modules via the ``oracle`` test subtree.
 
 **Usage examples** (``example_*.py``)

@@ -12,11 +12,11 @@
         python example_09_migration_advisor.py
 """
 
-__author__ = "Automation Mojo LLC"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__author__ = "Code Craft AI LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 
 
-from automojo.analysis.statistical import report
+from ccai.analysis.statistical import report
 
 
 def transform(pdv):

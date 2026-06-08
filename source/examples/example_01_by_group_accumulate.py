@@ -17,11 +17,11 @@
         python example_01_by_group_accumulate.py
 """
 
-__author__ = "Automation Mojo LLC"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__author__ = "Code Craft AI LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 
 
-from automojo.analysis.statistical import ObservationEngine, SetReader
+from ccai.analysis.statistical import ObservationEngine, SetReader
 
 
 def accumulate(pdv):

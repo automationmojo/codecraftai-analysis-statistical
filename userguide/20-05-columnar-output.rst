@@ -39,7 +39,7 @@ reused -- no per-row materialization happens between stages.
 
 .. code-block:: python
 
-    from automojo.analysis.statistical import ColumnarStep
+    from ccai.analysis.statistical import ColumnarStep
 
     def stage_one(pdv):
         pdv["gross"] = pdv["qty"] * pdv["price"]

@@ -23,7 +23,7 @@ SAS::
 
 Python::
 
-    from automojo.analysis.statistical import (ObservationEngine, SetReader)
+    from ccai.analysis.statistical import (ObservationEngine, SetReader)
 
     def accumulate(pdv):
         if pdv.first["customer"] is True:
@@ -50,7 +50,7 @@ SAS::
 
 Python::
 
-    from automojo.analysis.statistical import (MergeReader, ObservationEngine)
+    from ccai.analysis.statistical import (MergeReader, ObservationEngine)
 
     reader = MergeReader(sources={"A": a_rows, "B": b_rows}, by=["id"],
                          in_flags={"A": "inA", "B": "inB"})
@@ -100,7 +100,7 @@ Database sources
 Wrap any PEP 249 cursor with :class:`DatabaseReader` and supply the dialect
 type map so the PDV can be typed from ``cursor.description``::
 
-    from automojo.analysis.statistical import (DatabaseReader, ObservationEngine,
+    from ccai.analysis.statistical import (DatabaseReader, ObservationEngine,
                                                PostgreSqlDialect)
     cur = conn.cursor()
     cur.execute("SELECT id, salary FROM employees ORDER BY id")
