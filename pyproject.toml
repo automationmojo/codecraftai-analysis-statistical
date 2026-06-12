@@ -4,12 +4,12 @@ description = "Code Craft AI Statistical Analysis Library -- SAS-comparable DATA
 version = "0.1.0"
 authors = ["Code Craft AI LLC <info@code-craft.ai>"]
 readme = "README.rst"
-license = "LICENSE.txt"
+license = "LicenseRef-CodeCraftAI-Dual-License"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
+    "License :: Other/Proprietary License",
     "Operating System :: POSIX",
     "Operating System :: MacOS :: MacOS X",
     "Programming Language :: Python :: 3",
@@ -38,12 +38,11 @@ Issues = "https://github.com/automationmojo/codecraftai-analysis-statistical/iss
 python = ">=3.10,<4.0"
 numpy = "^2.0"
 codecraftai-errors = { git = "https://github.com/automationmojo/codecraftai-errors.git", branch = "main" }
-codecraftai-testbase = { git = "https://github.com/automationmojo/codecraftai-testbase.git", branch = "main" }
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.6"
+codecraftai-testbase = { git = "https://github.com/automationmojo/codecraftai-testbase.git", branch = "main" }
 
-[tool.poetry.group.dbio.dependencies]
 
 [tool.ruff]
 target-version = "py310"
